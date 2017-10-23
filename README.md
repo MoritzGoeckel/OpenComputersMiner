@@ -51,6 +51,7 @@ This is where the software starts. The modules are imported and subsequently exe
 
 This is a skript which asks the user wether the the robot should start mining or not.
 Possible answers are "y" for yes and "n" for no.
+After that one can spacify the total width of the area which will be mined by typing in an odd number.
 
-## Usage:
+## Usage
 In order to use the Interface to start the robot one needs to specify the correct path to the starting module (e.g. /mypath/MAIN.lua) inside the interface script.
