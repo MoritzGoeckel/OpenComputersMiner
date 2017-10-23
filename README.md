@@ -46,3 +46,11 @@ This module contains all the functions for the "zigzag" mining pattern
 ### Main
 
 This is where the software starts. The modules are imported and subsequently executed here
+
+### Interface
+
+This is a skript which asks the user wether the the robot should start mining or not.
+Possible answers are "y" for yes and "n" for no.
+
+## Usage:
+In order to use the Interface to start the robot one needs to specify the correct path to the starting module (e.g. /mypath/MAIN.lua) inside the interface script.
