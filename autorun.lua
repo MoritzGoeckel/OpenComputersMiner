@@ -12,7 +12,7 @@ if startAnswer == "y" then
 
 	print("robot started..")
 	--the absolute path to the starting module must be specified in the dofile() function
-	loadfile("mnt/005/scripts/modules/MAIN.lua")(widthAnswer)
+	loadfile("/scripts/modules/MAIN.lua")(widthAnswer)
 
 --might need a more differentiated functionality between typing "n" and typing not "y"
 elseif startAnswer == "n" then

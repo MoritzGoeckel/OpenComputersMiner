@@ -55,3 +55,14 @@ After that one can spacify the total width of the area which will be mined by ty
 
 ## Usage
 In order to use the Interface to start the robot one needs to specify the correct path to the starting module (e.g. /mypath/MAIN.lua) inside the interface script.
+<br/>
+<br/>
+How to enable the automatic interface start by system start:
+<br/>
+1. start the robot and type "install" in the root directory<br/>
+2. you will be asked what you want to install, choose openOS<br/>
+3. name your interface file (or the file you want to autostart) "autorun.lua"<br/>
+4. specify the path to your autorun.lua file under /home/.shrc<br/>
+
+Reference:<br/>
+https://github.com/MightyPirates/OpenComputers/issues/2171#issuecomment-266532559 <br/>
