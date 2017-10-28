@@ -1,4 +1,4 @@
 r = require("robot")
 component = require("component")
 g = component.generator
-inv = component.inentory_controller
+inv = component.inventory_controller

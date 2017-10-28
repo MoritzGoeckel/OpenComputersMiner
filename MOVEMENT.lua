@@ -54,11 +54,15 @@ end
 function movement.carve(height)
 	if r.durability() == 0 or r.durability() == nil then
 		--Todo error
-		print("Error: No tool")
-		while r.durability() == 0 or r.durability() == nil do
-			os.sleep(5)
+		if invHelper.exchangeTool("minecraft:diamond_pickaxe") then
+			print("Tool was exchanged...")
+		else
+			print("Error: No tool")
+			while r.durability() == 0 or r.durability() == nil do
+				os.sleep(5)
+			end
+			print("Found a tool now, continuing...")
 		end
-		print("Found a tool now, continuing...")
 	end	
 
 	while r.detect() do 
@@ -102,12 +106,16 @@ end
 
 function movement.checkDurability()
 	if r.durability() == 0 or r.durability() == nil then
-		--Todo error
-		print("Error: No tool")
-		while r.durability() == 0 or r.durability() == nil do
-			os.sleep(5)
+		if invHelper.exchangeTool("minecraft:diamond_pickaxe") then
+			print("Tool was exchanged...")
+		else
+			--Todo error
+			print("Error: No tool")
+			while r.durability() == 0 or r.durability() == nil do
+				os.sleep(5)
+			end
+			print("Found a tool now, continuing...")
 		end
-		print("Found a tool now, continuing...")
 	end
 end
 
@@ -119,13 +127,16 @@ function movement.carveForward(distance, height)
 	for i = 0, distance - 1 do
 		movement.checkBridge()
 		
+		movement.checkDurability()
 		r.swing()
 		while r.forward() == nil do
-	r.swing()
+			movement.checkDurability()
+			r.swing()
 		end
 
 		while height >= 2 and r.detectUp() do
-	r.swingUp()
+			movement.checkDurability()
+			r.swingUp()
 end
 	end
 	

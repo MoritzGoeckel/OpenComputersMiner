@@ -106,3 +106,17 @@ function invHelper.dropGargabe(item, keepN)
 		end
 	end
 end
+
+--can be called if the tool brakes for replacing it with a new obe
+function invHelper.exchangeTool(tool)
+	for i=1, 16, 1 do
+		if invHelper.getItemName(i) == tool then
+			r.select(i)
+			--swap the items
+			if inv.equip() then
+				--stop iterating only when the swap was successful
+				return true
+			end
+		end
+	end
+end

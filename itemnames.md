@@ -8,3 +8,4 @@
 * minecraft:stone → Andesite
 * minecraft:dirt
 * minecraft:gravel
+* minecraft:diamond_pickaxe
