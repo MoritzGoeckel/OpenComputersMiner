@@ -108,15 +108,30 @@ function invHelper.dropGargabe(item, keepN)
 end
 
 --can be called if the tool brakes for replacing it with a new obe
-function invHelper.exchangeTool(tool)
-	for i=1, 16, 1 do
-		if invHelper.getItemName(i) == tool then
-			r.select(i)
-			--swap the items
-			if inv.equip() then
-				--stop iterating only when the swap was successful
-				return true
+function invHelper.exchangeTool()
+	local tools = {'minecraft:diamond_pickaxe'}
+	for _,tool in ipairs(tools) do
+		for i=1, 16, 1 do
+			if invHelper.getItemName(i) == tool then
+				r.select(i)
+				--swap the items
+				if inv.equip() then
+					--stop iterating only when the swap was successful
+					return true
+				end
 			end
+		end
+	end
+end
+
+function invHelper.provideFuel()
+	if(g.count() < 10) then
+		local slot = invHelper.containsItem('minecraft:coal')
+		if slot then
+			r.select(slot)
+			g.insert(64)
+		else
+			return 'required resource not found'
 		end
 	end
 end

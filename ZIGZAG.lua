@@ -1,66 +1,12 @@
 zigzag = {}
 
-function zigzag.carveCorridor(n)
-	for i=0, n, 1
-	do
-		movement.carveForward(1,2)
-		movement.doTorchStep(10)
-	end
-end
-
 function zigzag.back180(n)
 	r.turnRight()
 	r.turnRight()
-	zigzag.carveCorridor(n)
+	movement.carveCorridor(n)
 	r.turnRight()
 	r.turnRight()
 end
-
--- n = length of the corridor
--- dir = shortcut direction (Left or Right)
-function zigzag.carveCorridorLong(n, dir)
-	local half = n/2
-	zigzag.carveCorridor(half-1)
-	if string.lower(dir) == "right" then
-		r.turnRight()
-		movement.carveForward(1,2)
-
-		zigzag.checkAndPlaceChest()
-
-		movement.doTorchStep(10)
-		movement.carveForward(1,2)
-		movement.doTorchStep(10)
-		movement.carve(2)
-
-		--go back
-		zigzag.back180(1)
-
-		r.turnLeft()
-	elseif string.lower(dir) == "left" then
-		r.turnLeft()
-		movement.carveForward(1,2)
-
-		zigzag.checkAndPlaceChest()
-
-		movement.doTorchStep(10)
-		movement.carveForward(1,2)
-		movement.doTorchStep(10)
-		movement.carve(2)
-
-		--go back
-		zigzag.back180(1)
-
-		r.turnRight()
-	end
-	zigzag.carveCorridor(half-1)
-end
-
-
-
-
-
-
-
 
 -- Assumption:
 -- presupposes the char to be at the first
@@ -95,29 +41,16 @@ function zigzag.checkAndPlaceChest()
 	end
 end
 
-
-function zigzag.provideFuel()
-	if(g.count() < 10) then
-		local slot = invHelper.containsItem('minecraft:coal')
-		if slot then
-			r.select(slot)
-			g.insert(64)
-		else
-			return 'required resource not found'
-		end
-	end
-end
-
 --width must be odd--
 function zigzag.start(totalWidth, sideWidth)
 	local ignore = {'minecraft:stone', 'minecraft:dirt', 'minecraft:gravel'}
 
-	zigzag.provideFuel()
+	invHelper.provideFuel()
 
 	--flag specifies if the robot SHOULD go to the right next
 	local midRange = totalWidth/2
 
-	zigzag.carveCorridor(4)
+	movement.carveCorridor(4)
 	--go back
 	zigzag.back180(2)
 
@@ -132,7 +65,7 @@ function zigzag.start(totalWidth, sideWidth)
 
 	while(true) 
 	do
-		zigzag.provideFuel()
+		invHelper.provideFuel()
 
 		--special case cobblestone, some are needed
 		invHelper.dropGargabe('minecraft:cobblestone', 10)
@@ -141,12 +74,12 @@ function zigzag.start(totalWidth, sideWidth)
 		end
 
 		r.turnLeft()
-		zigzag.carveCorridor(sideWidth)
+		movement.carveCorridor(sideWidth)
 		r.turnLeft()
-		zigzag.carveCorridorLong(totalWidth, "right")
+		movement.carveCorridorLong(totalWidth, "right")
 		r.turnRight()
-		zigzag.carveCorridor(sideWidth)
+		movement.carveCorridor(sideWidth)
 		r.turnRight()
-		zigzag.carveCorridorLong(totalWidth, "left")
+		movement.carveCorridorLong(totalWidth, "left")
 	end
 end

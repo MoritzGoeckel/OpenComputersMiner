@@ -104,9 +104,9 @@ os.sleep(5)
 	return true
 end
 
-function movement.checkDurability()
+function movement.checkDurability(tool)
 	if r.durability() == 0 or r.durability() == nil then
-		if invHelper.exchangeTool("minecraft:diamond_pickaxe") then
+		if invHelper.exchangeTool(tool) then
 			print("Tool was exchanged...")
 		else
 			--Todo error
@@ -157,4 +157,62 @@ function movement.back(distance)
 	end
 	
 	return true
+end
+
+--base function for carving corridors
+function movement.carveCorridor(n)
+	for i=0, n, 1
+	do
+		movement.carveForward(1,2)
+		movement.doTorchStep(10)
+	end
+end
+
+
+-- n = length of the corridor
+-- dir = shortcut direction (Left or Right)
+function movement.carveCorridorLong(n, dir)
+	if dir then
+		local half = n/2
+		--first half
+		movement.carveCorridor(half-1)
+
+		if string.lower(dir) == "right" then
+			r.turnRight()
+			movement.carveForward(1,2)
+
+			plain.checkAndPlaceChest()
+
+			movement.doTorchStep(10)
+			movement.carveForward(1,2)
+			movement.doTorchStep(10)
+			movement.carve(2)
+
+			--go back
+			zigzag.back180(1)
+
+			r.turnLeft()
+		elseif string.lower(dir) == "left" then
+			r.turnLeft()
+			movement.carveForward(1,2)
+
+			zigzag.checkAndPlaceChest()
+
+			movement.doTorchStep(10)
+			movement.carveForward(1,2)
+			movement.doTorchStep(10)
+			movement.carve(2)
+
+			--go back
+			zigzag.back180(1)
+
+			r.turnRight()
+		end
+		--second half
+		movement.carveCorridor(half-1)
+	--if no dir is specified
+	else
+		movement.carveCorridor(n-1)
+	end
+	
 end
