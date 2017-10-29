@@ -55,7 +55,7 @@ function invHelper.checkInventory()
 end
 
 function invHelper.transferAllItemsToChest()
-	local ignore = {'minecraft:torch', 'quark:custom_chest', 'minecraft:stone', 'minecraft:dirt', 'minecraft:gravel', 'minecraft:cobblestone', 'minecraft:coal'}
+	local ignore = {'minecraft:torch', 'quark:custom_chest', 'minecraft:stone', 'minecraft:dirt', 'minecraft:gravel', 'minecraft:cobblestone', 'minecraft:coal'; 'minecraft:diamond_pickaxe'}
 	--some items should always stay in the robots inventory
 	-- the rest can be transfered to the chest
 	for i=1, 16, 1 do
