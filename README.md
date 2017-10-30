@@ -43,6 +43,10 @@ The movement module is responsible for stable and highly error tolerant movement
 
 This module contains all the functions for the "zigzag" mining pattern
 
+### Plain
+
+This module contains all the functions for the "plain" mining pattern (which is basically no pattern at all)
+
 ### Main
 
 This is where the software starts. The modules are imported and subsequently executed here
