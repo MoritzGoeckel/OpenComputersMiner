@@ -11,7 +11,7 @@ This is a fully modular software for an open computers mining robot
 * Disposes insignificant items (e.g. cobblestone)
 * Builds a bridge when necessary
 * Stable behavior in case of mobs, falling blocks like grave etc.
-* Zigzag pattern for maximum visibility coverage of blocks
+* Different mining patterns available
 
 ## Todo
 
