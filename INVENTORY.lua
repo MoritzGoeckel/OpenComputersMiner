@@ -109,7 +109,7 @@ end
 
 --can be called if the tool brakes for replacing it with a new obe
 function invHelper.exchangeTool()
-	local tools = {'minecraft:diamond_pickaxe'}
+	local tools = {'minecraft:diamond_pickaxe', 'minecraft:shovel'}
 	for _,tool in ipairs(tools) do
 		for i=1, 16, 1 do
 			if invHelper.getItemName(i) == tool then

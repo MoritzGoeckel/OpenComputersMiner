@@ -3,22 +3,52 @@ local startAnswer = io.read()
 
 if startAnswer == "y" then
 
-	local widthAnswer
-	while not widthAnswer do
-		print("Specify the total width of the corridor.")
-		print("Therefore use an odd number.")
-		widthAnswer = tonumber(io.read())	
-	end
-
 	local patternAnswer
+	--requires a valid input of pattern-selection
 	while not patternAnswer do
 		print("Select a pattern:")
 		print("1. zigzag")
 		print("2. plain")
+		print("3. square")
 		patternAnswer = tonumber(io.read())
-		if patternAnswer ~= 1 and patternAnswer ~= 2 then
+		if patternAnswer ~= 1 and patternAnswer ~= 2 and patternAnswer ~= 3 then
 			patternAnswer = nil
 		end 
+	end
+
+	local widthAnswer
+	--requires a valid input of width-selection
+	while not widthAnswer do
+
+		if patternAnswer == 1 then
+
+			while not widthAnswer do
+				print("Specify the total width of the corridor.")
+				print("Therefore use an odd number.")
+				widthAnswer = tonumber(io.read())	
+			end
+
+		elseif patternAnswer == 2 then
+
+			while not widthAnswer do
+				print("Specify the total width of the corridor.")
+				print("Therefore use an odd number.")
+				widthAnswer = tonumber(io.read())	
+			end
+
+		elseif patternAnswer == 3 then
+
+			while not widthAnswer do
+				print("Specify the total width of the corridor.")
+				print("Therefore use an even number.")
+				widthAnswer = tonumber(io.read())	
+			end
+
+		else
+
+			widthAnswer = nil
+
+		end
 	end
 
 	print("robot started..")
