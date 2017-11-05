@@ -60,11 +60,11 @@ This is where the software starts. The modules are imported and subsequently exe
 ### Interface
 The interface is called at system start.
 <br/>
-1. asks whether the robot should start mining [y for yes | n for no]
+1. asks whether the robot should start mining
 <br/>
-2. specify the width of the mining area
+2. choose a mining patte
 <br/>
-3. choose a pattern
+3. specify the size of the mining area
 
 
 ## Usage
