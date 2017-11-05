@@ -47,6 +47,12 @@ This module contains all the functions for the "zigzag" mining pattern
 
 This module contains all the functions for the "plain" mining pattern (which is basically no pattern at all)
 
+### Square
+
+This module contains the functions for the "square" mining pattern. 
+</br>
+It mines a whole of the specified square size.
+
 ### Main
 
 This is where the software starts. The modules are imported and subsequently executed here
